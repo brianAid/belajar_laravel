@@ -5,17 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pegawai</title>
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
 </head>
 
 <body>
     <h3>Data Pegawai</h3>
 
-    <a href="/pegawai/tambah"> + Tambah Pegawai Baru</a>
+    <div class="grid">
+        <a class="btn-primary" href="/pegawai/tambah"> + Tambah Pegawai Baru</a>
+        
+    </div>
 
     <br />
     <br />
 
-    <table border="1">
+    <table class="table">
         <tr>
             <th>Nama</th>
             <th>Jabatan</th>
@@ -38,6 +42,8 @@
             </tr>
         @endforeach
     </table>
+    {{ $pegawai->links() }}
 </body>
+<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 
 </html>
