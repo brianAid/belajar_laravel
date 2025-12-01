@@ -18,6 +18,7 @@ Route::get('formulir', [DosenController::class, 'formulir']);
 Route::post('formulir/proses', [DosenController::class, 'proses']);
 Route::prefix('pegawai')->group(callback: function () {
     Route::get('/', [PegawaiController::class, 'index']);
+    Route::get('/cari', [PegawaiController::class, 'cari']);
     Route::get('/tambah', [PegawaiController::class, 'tambah']);
     Route::post('/store', [PegawaiController::class, 'store']);
     Route::get('/edit/{id}', [PegawaiController::class, 'edit']);
