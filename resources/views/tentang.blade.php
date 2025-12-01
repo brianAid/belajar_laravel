@@ -1,7 +1,7 @@
 @extends('master')
 @section('judul_halaman')
-ini adalah halaman blog
+ini adalah halaman tentang
 @endsection
 @section('konten')
-ini adalah konten halaman blog
+ini adalah konten halaman tentang
 @endsection

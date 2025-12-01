@@ -10,4 +10,10 @@ class BlogController extends Controller
     {
         return view('blog');
     }
+    public function tentang(){
+        return view('tentang');
+    }
+    public function kontak(){
+        return view('kontak');
+    }
 }
