@@ -15,7 +15,7 @@
         <a class="btn-primary" href="/pegawai/tambah"> + Tambah Pegawai Baru</a>
         <div><p>Cari Data Pegawai :</p>
         <form action="/pegawai/cari" method="GET" class="d-flex">
-            <input type="text" name="cari" placeholder="Cari Pegawai .." value="{{ request('cari') }}" class="form-control me-2">
+            <input type="text" name="cari" placeholder="Cari Pegawai .." value="{{ old('cari') }}" class="form-control me-2">
             <button type="submit" class="btn btn-primary">CARI</button>
         </form>
     </div>

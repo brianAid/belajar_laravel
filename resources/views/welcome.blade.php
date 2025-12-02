@@ -27,7 +27,7 @@
             <li><a href="{{ url('dosen') }}">Dosen</a></li>
             <li><a href="{{ url('formulir') }}">Formulir</a></li>
             <li><a href="{{ url('pegawai') }}">Pegawai</a></li>
-            <li><a href="{{ url('pegawai/tambah') }}">Tambah Pegawai</a></li>
+            <li><a href="{{ url('validasi') }}">validasi</a></li>
         </ul>
 
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\ValidasiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,3 +26,6 @@ Route::prefix('pegawai')->group(callback: function () {
     Route::post('/update', [PegawaiController::class, 'update']);
     Route::get('/hapus/{id}', [PegawaiController::class, 'hapus']);
 });
+
+Route::get('validasi', [ValidasiController::class, 'input']);
+Route::post('validasi/proses', [ValidasiController::class, 'proses']);
