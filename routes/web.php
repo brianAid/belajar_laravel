@@ -6,6 +6,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HadiahController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\SkripsiController;
 use App\Http\Controllers\ValidasiController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
@@ -49,10 +50,12 @@ Route::get('pengguna', [PenggunaController::class, 'index']);
 Route::get('artikel', [WebController::class, 'index']);
 //relasi many to many
 Route::get('hadiah', [HadiahController::class, 'index']);
-
+//validasi
 Route::get('validasi', [ValidasiController::class, 'input']);
 Route::post('validasi/proses', [ValidasiController::class, 'proses']);
-
+//enkripsi dan dekripsi
+Route::get('enkripsi', [SkripsiController::class, 'data']);
+Route::get('enkripsi/{data}', [SkripsiController::class, 'data_proses']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
