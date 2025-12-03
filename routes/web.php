@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\HadiahController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ValidasiController;
@@ -46,6 +47,8 @@ Route::prefix('guru')->group(callback: function () {
 Route::get('pengguna', [PenggunaController::class, 'index']);
 //relasi one to many
 Route::get('artikel', [WebController::class, 'index']);
+//relasi many to many
+Route::get('hadiah', [HadiahController::class, 'index']);
 
 Route::get('validasi', [ValidasiController::class, 'input']);
 Route::post('validasi/proses', [ValidasiController::class, 'proses']);

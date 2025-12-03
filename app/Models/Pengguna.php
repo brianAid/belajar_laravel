@@ -12,4 +12,8 @@ class Pengguna extends Model
     {
         return $this->hasOne(Telepon::class, 'pengguna_id');
     }
+    public function hadiah()
+    {
+        return $this->belongsToMany(Hadiah::class, 'anggota_hadiah', 'pengguna_id', 'hadiah_id');
+    }
 }
