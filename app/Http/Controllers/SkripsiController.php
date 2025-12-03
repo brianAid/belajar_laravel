@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Crypt;
+use Hash;
 use Illuminate\Http\Request;
 
 class SkripsiController extends Controller
@@ -25,5 +26,10 @@ class SkripsiController extends Controller
         echo "Nama : " . $data['nama'];
         echo "<br/>";
         echo "Pekerjaan : " . $data['pekerjaan'];
+    }
+    public function hash()
+    {
+        $hash_password = Hash::make('rahasia');
+        echo $hash_password;
     }
 }
