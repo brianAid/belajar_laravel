@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ValidasiController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,8 @@ Route::prefix('guru')->group(callback: function () {
     Route::get('/trash', [GuruController::class, 'trashed']);
     Route::post('/restore/{id}', [GuruController::class, 'restore']);
 });
+//relasi one to one
+Route::get('pengguna', [PenggunaController::class, 'index']);
 
 Route::get('validasi', [ValidasiController::class, 'input']);
 Route::post('validasi/proses', [ValidasiController::class, 'proses']);

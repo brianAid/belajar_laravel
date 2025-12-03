@@ -28,6 +28,7 @@
             <li><a href="{{ url('formulir') }}">Formulir</a></li>
             <li><a href="{{ url('pegawai') }}">Pegawai</a></li>
             <li><a href="{{ url('validasi') }}">validasi</a></li>
+            <li><a href="{{ url('pengguna') }}">Relasi One To One</a></li>
         </ul>
 
 
