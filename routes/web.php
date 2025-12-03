@@ -37,6 +37,8 @@ Route::prefix('guru')->group(callback: function () {
     Route::get('/edit/{id}', [GuruController::class, 'edit']);
     Route::post('/update', [GuruController::class, 'update']);
     Route::get('/hapus/{id}', [GuruController::class, 'destroy']);
+    Route::get('/trash', [GuruController::class, 'trashed']);
+    Route::post('/restore/{id}', [GuruController::class, 'restore']);
 });
 
 Route::get('validasi', [ValidasiController::class, 'input']);

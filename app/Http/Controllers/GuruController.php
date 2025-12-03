@@ -75,4 +75,20 @@ class GuruController extends Controller
         $guru->delete();
         return redirect('guru')->with('success', 'Data guru berhasil dihapus');
     }
+
+    public function trashed()
+    {
+        $guru = Guru::onlyTrashed()->paginate(15);
+        return view('guru.trashed', compact('guru'));
+    }
+    public function restore($id)
+    {
+        $guru = Guru::onlyTrashed()->where('id', $id)->first();
+        if ($guru) {
+            $guru->restore();
+            return redirect('guru/trash')->with('success', 'Data guru berhasil dikembalikan');
+        } else {
+            return redirect('guru/trash')->with('error', 'Data guru tidak ditemukan');
+        }
+    }
 }
