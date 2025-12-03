@@ -55,7 +55,7 @@ Route::get('validasi', [ValidasiController::class, 'input']);
 Route::post('validasi/proses', [ValidasiController::class, 'proses']);
 //enkripsi dan dekripsi
 Route::get('enkripsi', [SkripsiController::class, 'data']);
-Route::get('enkripsi/{data}', [SkripsiController::class, 'data_proses']);
+Route::get('data/{data}', [SkripsiController::class, 'data_proses']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
