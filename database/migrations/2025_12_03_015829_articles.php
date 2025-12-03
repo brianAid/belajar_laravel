@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        schema::create('telepon', function (Blueprint $table) {
+        schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id')->constrained('pengguna')->onDelete('cascade');
-            $table->string('nomor_telepon', 20);
+            $table->string('judul', 100);
             $table->timestamps();
         });
     }

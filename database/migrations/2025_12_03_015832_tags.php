@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        schema::create('telepon', function (Blueprint $table) {
+        schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id')->constrained('pengguna')->onDelete('cascade');
-            $table->string('nomor_telepon', 20);
+            $table->string('tag', 50);
+            $table->foreignId('article_id')->constrained('articles')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ValidasiController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -43,6 +44,8 @@ Route::prefix('guru')->group(callback: function () {
 });
 //relasi one to one
 Route::get('pengguna', [PenggunaController::class, 'index']);
+//relasi one to many
+Route::get('artikel', [WebController::class, 'index']);
 
 Route::get('validasi', [ValidasiController::class, 'input']);
 Route::post('validasi/proses', [ValidasiController::class, 'proses']);

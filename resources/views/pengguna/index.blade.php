@@ -12,7 +12,6 @@
     <div class="container">
         <div class="card mt-5">
             <div class="card-body">
-                <h3 class="text-center"><a href="https://www.malasngoding.com">www.malasngoding.com</a></h3>
                 <h5 class="text-center my-4">Eloquent One To One Relationship</h5>
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -24,8 +23,8 @@
                     <tbody>
                         @foreach($pengguna as $p)
                             <tr>
-                                <td>{{ $p->nama ??'-'}}</td>
-                                <td>{{ $p->telepon->nomor_telepon??'-' }}</td>
+                                <td>{{ $p->nama ?? '-'}}</td>
+                                <td>{{ $p->telepon->nomor_telepon ?? '-' }}</td>
                             </tr>
                         @endforeach
                     </tbody>
