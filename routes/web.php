@@ -63,5 +63,15 @@ Route::get('hash', [SkripsiController::class, 'hash']);
 Route::get('upload', [App\Http\Controllers\UploadController::class, 'upload']);
 Route::post('upload/proses', [App\Http\Controllers\UploadController::class, 'proses_upload']);
 Route::get('upload/hapus/{id}', [App\Http\Controllers\UploadController::class, 'hapus']);
-
+//session
+Route::get('session/buat', [App\Http\Controllers\TesController::class, 'buatSession']);
+Route::get('session/tampil', [App\Http\Controllers\TesController::class, 'tampilkanSession']);
+Route::get('session/hapus', [App\Http\Controllers\TesController::class, 'hapusSession']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//alert notifikasi
+Route::get('pesan', [App\Http\Controllers\NotifController::class, 'index']);
+Route::get('pesan/sukses', [App\Http\Controllers\NotifController::class, 'sukses']);
+Route::get('pesan/peringatan', [App\Http\Controllers\NotifController::class, 'peringatan']);
+Route::get('pesan/gagal', [App\Http\Controllers\NotifController::class, 'gagal']);
+//error handling
+Route::get('error/{nama}', [App\Http\Controllers\WebController::class, 'error']);
