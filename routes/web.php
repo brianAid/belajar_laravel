@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::middleware(['auth','verified'])->group(function () {
 
-Route::get('blog', [BlogController::class, 'index']);
-Route::get('blog/tentang', [BlogController::class, 'tentang']);
+    Route::get('blog', [BlogController::class, 'index']);
+    Route::get('blog/tentang', [BlogController::class, 'tentang']);
 Route::get('blog/contact', [BlogController::class, 'kontak']);
 Route::get('dosen', [DosenController::class, 'index']);
 Route::get('dosen/{alamat}', [DosenController::class, 'alamat']);
@@ -56,7 +57,6 @@ Route::post('validasi/proses', [ValidasiController::class, 'proses']);
 //enkripsi dan dekripsi
 Route::get('enkripsi', [SkripsiController::class, 'data']);
 Route::get('data/{data}', [SkripsiController::class, 'data_proses']);
-Auth::routes();
 //hash
 Route::get('hash', [SkripsiController::class, 'hash']);
 //upload
@@ -75,3 +75,10 @@ Route::get('pesan/peringatan', [App\Http\Controllers\NotifController::class, 'pe
 Route::get('pesan/gagal', [App\Http\Controllers\NotifController::class, 'gagal']);
 //error handling
 Route::get('error/{nama}', [App\Http\Controllers\WebController::class, 'error']);
+//mail
+Route::get('kirim-email', [App\Http\Controllers\emailController::class, 'MailBrian']);
+
+// Auth::routes();
+// Route::redirect('/dasjboard', '/home');
+});
+Auth::routes(['verify' => true]);
