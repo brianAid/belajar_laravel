@@ -1,54 +1,69 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Upload Gambar - File atau URL</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-        }
+    <title>Tutorial Laravel #30 : Membuat Upload File Dengan Laravel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        .form-group {
-            margin: 20px 0;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-        }
-
-        input[type="file"],
-        button {
-            padding: 10px;
-        }
-    </style>
 </head>
 
 <body>
+    <div class="row">
+        <div class="container">
 
-    <h2>Upload Gambar</h2>
+            <h2 class="text-center my-5">Tutorial Laravel #30 : Membuat Upload File Dengan Laravel</h2>
 
-    <form action="upload/proses" method="post" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label>Pilih file dari komputer:</label><br>
-            <input type="file" name="gambar_file" accept="image/*">
+            <div class="col-lg-8 mx-auto my-5">
+
+                @if(count($errors) > 0)
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            {{ $error }} <br />
+                        @endforeach
+                    </div>
+                @endif
+
+                <form action="/upload/proses" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+
+                    <div class="form-group">
+                        <b>File Gambar</b><br />
+                        <input type="file" name="file">
+                    </div>
+
+                    <div class="form-group">
+                        <b>Keterangan</b>
+                        <textarea class="form-control" name="keterangan"></textarea>
+                    </div>
+
+                    <input type="submit" value="Upload" class="btn btn-primary">
+                </form>
+
+                <h4 class="my-5">Data</h4>
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th width="1%">File</th>
+                            <th>Keterangan</th>
+                            <th width="1%">OPSI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($gambar ?? [] as $g)
+                            <tr>
+                                <td><img width="150px" src="{{ url('/gambar/' . $g->file) }}"></td>
+                                <td>{{$g->keterangan}}</td>
+                                <td><a class="btn btn-danger" href="/upload/hapus/{{ $g->id }}">HAPUS</a></td>
+                            </tr>
+                        @empty
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-        <hr>
-        <p><strong>Atau</strong></p>
-
-        <div class="form-group">
-            <label>Masukkan URL gambar:</label>
-            <input type="text" name="gambar_url" placeholder="https://example.com/gambar.jpg">
-        </div>
-
-        <button type="submit" name="upload">Upload Gambar</button>
-    </form>
-
+    </div>
 </body>
 
-</html>z
+</html>
