@@ -59,4 +59,9 @@ Route::get('data/{data}', [SkripsiController::class, 'data_proses']);
 Auth::routes();
 //hash
 Route::get('hash', [SkripsiController::class, 'hash']);
+//upload
+Route::get('upload', [App\Http\Controllers\UploadController::class, 'upload']);
+Route::post('upload/proses', [App\Http\Controllers\UploadController::class, 'proses_upload']);
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
