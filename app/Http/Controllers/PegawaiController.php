@@ -16,8 +16,8 @@ class PegawaiController extends Controller
     {
         $cari = $request->cari;
         $pegawai = DB::table('pegawai')
-        ->where('pegawai_nama', 'like', "%" . $cari . "%")
-        ->paginate();
+            ->where('pegawai_nama', 'like', "%" . $cari . "%")
+            ->paginate();
         return view('pegawai.index', ['pegawai' => $pegawai]);
     }
     public function tambah()
@@ -53,5 +53,11 @@ class PegawaiController extends Controller
     {
         DB::table('pegawai')->where('pegawai_id', $id)->delete();
         return redirect('/pegawai');
+    }
+    public function cetak_pdf()
+    {
+        $pegawai = DB::table('pegawai')->get();
+        $pdf = PDF::loadView('pegawai.cetak_pdf', ['pegawai' => $pegawai]);
+        return $pdf->download('laporan-pegawai.pdf');
     }
 }

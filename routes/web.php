@@ -14,15 +14,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::middleware(['auth','verified'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('blog', [BlogController::class, 'index']);
     Route::get('blog/tentang', [BlogController::class, 'tentang']);
-Route::get('blog/contact', [BlogController::class, 'kontak']);
-Route::get('dosen', [DosenController::class, 'index']);
-Route::get('dosen/{alamat}', [DosenController::class, 'alamat']);
-Route::get('formulir', [DosenController::class, 'formulir']);
-Route::post('formulir/proses', [DosenController::class, 'proses']);
+    Route::get('blog/contact', [BlogController::class, 'kontak']);
+    Route::get('dosen', [DosenController::class, 'index']);
+    Route::get('dosen/{alamat}', [DosenController::class, 'alamat']);
+    Route::get('formulir', [DosenController::class, 'formulir']);
+    Route::post('formulir/proses', [DosenController::class, 'proses']);
+});
 
 //Query Builder
 Route::prefix('pegawai')->group(callback: function () {
@@ -33,6 +34,7 @@ Route::prefix('pegawai')->group(callback: function () {
     Route::get('/edit/{id}', [PegawaiController::class, 'edit']);
     Route::post('/update', [PegawaiController::class, 'update']);
     Route::get('/hapus/{id}', [PegawaiController::class, 'hapus']);
+
 });
 //eloquent
 Route::prefix('guru')->group(callback: function () {
@@ -79,6 +81,9 @@ Route::get('error/{nama}', [App\Http\Controllers\WebController::class, 'error'])
 Route::get('kirim-email', [App\Http\Controllers\emailController::class, 'MailBrian']);
 
 // Auth::routes();
-// Route::redirect('/dasjboard', '/home');
-});
+Route::redirect('/dashboard', '/home');
+//action url
+Route::get('halo', [App\Http\Controllers\HaloController::class, 'panggil']);
+Route::get('halo/{nama}', [App\Http\Controllers\HaloController::class, 'halo']);
+
 Auth::routes(['verify' => true]);
