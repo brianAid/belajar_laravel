@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\GuruExport;
+use App\Imports\GuruImport;
 use App\Models\Guru;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class GuruController extends Controller
 {
@@ -15,7 +18,7 @@ class GuruController extends Controller
         $cari = $request->cari;
         $guru = Guru::when($cari, function ($query, $cari) {
             return $query->where('nama', 'like', "%{$cari}%")
-                         ->orWhere('mapel', 'like', "%{$cari}%");
+                ->orWhere('mapel', 'like', "%{$cari}%");
         })->paginate(15);
         return view('guru.index', compact('guru'));
     }
@@ -90,5 +93,23 @@ class GuruController extends Controller
         } else {
             return redirect('guru/trash')->with('error', 'Data guru tidak ditemukan');
         }
+    }
+
+    public function export_excel()
+    {
+        return Excel::download(new GuruExport(), 'guru.xlsx');
+    }
+    public function import_excel(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+        $nama_file = rand() . $file->getClientOriginalName();
+        $file->move('file_guru', $nama_file);
+        Excel::import(new GuruImport(), public_path('/file_guru/' . $nama_file));
+
+        return redirect('guru')->with('success', 'Data guru berhasil diimport');
     }
 }

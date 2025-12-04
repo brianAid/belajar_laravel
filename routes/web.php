@@ -34,6 +34,7 @@ Route::prefix('pegawai')->group(callback: function () {
     Route::get('/edit/{id}', [PegawaiController::class, 'edit']);
     Route::post('/update', [PegawaiController::class, 'update']);
     Route::get('/hapus/{id}', [PegawaiController::class, 'hapus']);
+    Route::get('/cetak', [PegawaiController::class, 'cetak_pdf']);
 
 });
 //eloquent
@@ -46,6 +47,8 @@ Route::prefix('guru')->group(callback: function () {
     Route::get('/hapus/{id}', [GuruController::class, 'destroy']);
     Route::get('/trash', [GuruController::class, 'trashed']);
     Route::post('/restore/{id}', [GuruController::class, 'restore']);
+    Route::get('/export', [GuruController::class, 'export_excel']);
+    Route::post('/import_excel', [GuruController::class, 'import_excel']);
 });
 //relasi one to one
 Route::get('pengguna', [PenggunaController::class, 'index']);
