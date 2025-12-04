@@ -90,3 +90,6 @@ Route::get('halo', [App\Http\Controllers\HaloController::class, 'panggil']);
 Route::get('halo/{nama}', [App\Http\Controllers\HaloController::class, 'halo']);
 
 Auth::routes(['verify' => true]);
+Route::get('/form', function () {
+    return view('biodata');
+});
