@@ -16,7 +16,7 @@ class GuruImport implements ToModel
         return new Guru([
             'nama' => (isset($row['nama']) ? $row['nama'] : $row[1]),
             'mapel' => (isset($row['mapel']) ? $row['mapel'] : $row[2]),
-            'umur' => (isset($row['umur']) ? $row['umur'] : $row[3]),
+            'umur' => (isset($row['Umur']) ? $row['Umur'] : $row[3]),
         ]);
     }
 }
